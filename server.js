@@ -3,8 +3,41 @@ var bodyParser = require('body-parser');
 var request = require("request");
 var app = express();
 
+var userId = process.env.USER_ID.toString();
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+app.get('/doit', function (req, res) {
+    res.sendStatus(200);
+
+    request({
+        uri: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: { access_token: process.env.TOKEN },
+        method: 'POST',
+        json: {
+            "recipient": {
+                "id": userId
+            },
+            "message": {
+                "text": "Assine o mais novo RBT da Anitta clicando aqui!"
+            }
+        }
+
+    }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var recipientId = body.recipient_id;
+            var messageId = body.message_id;
+
+            console.log("Successfully sent RBT message with id %s to recipient %s",
+                messageId, recipientId);
+        } else {
+            console.error("Unable to send message.");
+            console.error(response);
+            console.error(error);
+        }
+    });
+});
 
 app.post('/webhook', function (req, res) {
     var data = req.body;
