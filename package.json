@@ -1,0 +1,26 @@
+{
+  "name": "bot-test",
+  "version": "1.0.0",
+  "description": "bot-test",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bpinhosilva/bot-test.git"
+  },
+  "keywords": [
+    "bot"
+  ],
+  "author": "Bruno Pinho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bpinhosilva/bot-test/issues"
+  },
+  "homepage": "https://github.com/bpinhosilva/bot-test#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
