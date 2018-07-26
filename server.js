@@ -20,7 +20,7 @@ app.get('/doit', function (req, res) {
                 "id": userId
             },
             "message": {
-                "text": "Assine o mais novo RBT da Anitta clicando aqui!"
+                "text": "Your message goes here!"
             }
         }
 
@@ -29,7 +29,7 @@ app.get('/doit', function (req, res) {
             var recipientId = body.recipient_id;
             var messageId = body.message_id;
 
-            console.log("Successfully sent RBT message with id %s to recipient %s",
+            console.log("Successfully sent message with id %s to recipient %s",
                 messageId, recipientId);
         } else {
             console.error("Unable to send message.");
